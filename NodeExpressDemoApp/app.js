@@ -12,6 +12,10 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index_1.default);
 app.use('/users', user_1.default);
+// Added RST API following instructions at https://docs.microsoft.com/en-us/visualstudio/javascript/publish-nodejs-app-azure?view=vs-2017
+app.use('/api', (req, res, next) => {
+    res.json({ "result": "success" });
+});
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
